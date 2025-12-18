@@ -10,158 +10,279 @@
  </body>
  </html>
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MY DAILYY</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY DAILYY</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-  <style>
+<style>
     body {
-      font-family: 'Nanum Pen Script', cursive;
-      background-color: #f5f1e8;
-      color: #4a3f35;
-      margin: 0;
-      padding: 0;
+        font-family: 'Nanum Pen Script', cursive;
+        background-color: #f7f1e6; /* 奶油色 */
+        margin: 0;
+        padding: 40px;
+        color: #5a4a3b;
     }
 
-    header {
-      text-align: center;
-      padding: 2.5rem 1rem 1.5rem;
+    h1 {
+        text-align: center;
+        font-size: 70px;
+        letter-spacing: 4px;
+        margin-top: 10px;
+        margin-bottom: 25px;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: 2px;
-    }
-
-    /* 日期顯示 */
     .date-box {
-      margin: 1rem auto 2rem;
-      padding: 1rem 2rem;
-      width: fit-content;
-      background: #efe4d2;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-      font-size: 1.6rem;
+        width: 450px;
+        margin: auto;
+        padding: 25px 20px;
+        border: 3px solid #e8d8bc;
+        border-radius: 18px;
+        background: #fdf7ee;
+        display: flex;
+        justify-content: space-around;
     }
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-      display: grid;
-      gap: 2rem;
+    .date-item {
+        font-size: 38px;
+        padding: 8px 18px;
+        background: white;
+        border-radius: 12px;
+        border: 2px solid #e1d2b8;
     }
 
-    /* 通用卡片 */
-    .card {
-      background: #ffffffcc;
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    /* 左側 memo + 圖片卡 */
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
     }
 
-    /* 語錄 */
-    .quote {
-      font-size: 1.4rem;
-      text-align: center;
-      letter-spacing: 1px;
+    .left-card, 
+    .right-card {
+        width: 310px;
+        background: #ffffffdd;
+        padding: 18px;
+        border-radius: 20px;
+        border: 3px solid #c9b7df;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* 日常短文 */
-    .daily-text textarea {
-      width: 100%;
-      border: none;
-      outline: none;
-      resize: none;
-      font-family: 'Nanum Pen Script', cursive;
-      font-size: 1.2rem;
-      background: transparent;
-      line-height: 1.8;
+    .memo-tag {
+        position: relative;
+        top: -10px;
+        left: -10px;
+        background: #f4b88f;
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 22px;
+        border-radius: 6px;
     }
 
-    /* 今日幸運值 */
-    .luck-number {
-      font-size: 2.2rem;
-      text-align: center;
-      margin: 0.5rem 0;
+    .photo {
+        width: 100%;
+        height: 260px;
+        background: #dcdcdc;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        background-size: cover;
+        background-position: center;
     }
 
-    .luck-bar {
-      width: 100%;
-      height: 14px;
-      background: #e2d6c4;
-      border-radius: 20px;
-      overflow: hidden;
+    .text {
+        font-size: 26px;
+        line-height: 1.4;
+        margin-bottom: 15px;
     }
 
-    .luck-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #c9b79c, #a89374);
-      width: 0%;
-      transition: width 1s;
+    .audio-bar {
+        height: 38px;
+        background: #eee;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        font-size: 24px;
     }
 
-    /* 小標題 */
-    h2 {
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
+    /* 右側 timeline */
+    .timeline-title {
+        margin-top: 60px;
+        font-size: 40px;
+        letter-spacing: 3px;
+        margin-left: 20px;
     }
 
-  </style>
+    .timeline-list {
+        margin-left: 20px;
+        font-size: 26px;
+    }
+
+    .bullet {
+        margin-top: 18px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .bullet-dot {
+        width: 12px;
+        height: 12px;
+        background: #8b7dc6;
+        border-radius: 50%;
+    }
+
+    /* Mood box */
+    .mood-box {
+        width: 320px;
+        background: #f2e5d0;
+        padding: 25px;
+        border-radius: 16px;
+        margin-top: 50px;
+        font-size: 30px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .mood-icon {
+        font-size: 48px;
+        margin: 10px 0;
+    }
+
+    /* ticket */
+    .ticket {
+        font-size: 30px;
+        padding: 12px 25px;
+        background: #e7a567;
+        border-radius: 12px;
+        width: fit-content;
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>MY DAILYY</h1>
-    <div class="date-box" id="todayDate"></div>
-  </header>
+<h1>MY DAILYY</h1>
 
-  <main>
+<div class="date-box">
+    <div class="date-item">2025</div>
+    <div class="date-item">01</div>
+    <div class="date-item">30</div>
+</div>
 
-    <!-- 語錄 -->
-    <div class="card quote">
-      今天的風很溫柔，<br>
-      你也要溫柔對待自己。
+<div class="container">
+
+    <!-- LEFT PHOTO CARD -->
+    <div class="left-card">
+        <div class="memo-tag">MEMO</div>
+
+        <div class="photo" style="background-image:url('your-photo-1.jpg');"></div>
+
+        <div class="text">
+            今天的風很溫柔。<br>
+            你也要溫柔待自己。
+        </div>
+
+        <div class="audio-bar">▶ ▬▬▬▬▬▬▬▬▬▬</div>
     </div>
 
-    <!-- 日常短文區 -->
-    <div class="card daily-text">
-      <h2>日常短文</h2>
-      <textarea rows="5" placeholder="寫下今天的心情、發生的小事，或想對自己說的話⋯⋯"></textarea>
+    <!-- RIGHT PHOTO CARD -->
+    <div class="right-card">
+        <div class="photo" style="background-image:url('your-photo-2.jpg');"></div>
     </div>
 
-    <!-- 今日幸運值 -->
-    <div class="card">
-      <h2>今日幸運值</h2>
-      <div class="luck-number" id="luckValue">0%</div>
-      <div class="luck-bar">
-        <div class="luck-fill" id="luckFill"></div>
-      </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline-title">TIMELINE</div>
+
+<div class="timeline-list">
+    <div class="bullet">
+        <div class="bullet-dot"></div>
+        <div>2025/01/01<br>新年的第一天，用照片記下新的開始。</div>
     </div>
 
-  </main>
+    <div class="bullet">
+        <div class="bullet-dot"></div>
+        <div>2025/01/05<br>散步時看到的光影很美。</div>
+    </div>
+</div>
 
-  <script>
-    /* 今日日期 */
-    const dateBox = document.getElementById("todayDate");
-    const now = new Date();
-    const y = now.getFullYear();
-    const m = String(now.getMonth() + 1).padStart(2, "0");
-    const d = String(now.getDate()).padStart(2, "0");
-    dateBox.textContent = `${y} / ${m} / ${d}`;
+<!-- MOOD -->
+<div class="mood-box">
+    <div><strong>TODAY’S MOOD</strong></div>
+    <div class="mood-icon">🌿</div>
+    <div>calm</div>
+    <div style="font-size:24px; margin-top:10px;">sundays are slow</div>
+</div>
 
-    /* 今日幸運值（隨機） */
-    const luck = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("luckValue").textContent = luck + "%";
-    document.getElementById("luckFill").style.width = luck + "%";
-  </script>
+<!-- Ticket -->
+<div class="ticket">TICKET</div>
 
 </body>
+ <!-- DAILY TEXT -->
+<div class="daily-text-box">
+    <div class="daily-title">DAILY NOTES</div>
+    <p>
+        今天沒有發生什麼特別的事，<br>
+        但陽光剛剛好，心也慢慢靜下來。<br>
+        有些平凡，其實就是最溫柔的日子。
+    </p>
+</div>
+<!-- LUCKY -->
+<div class="lucky-box">
+    <div class="lucky-title">TODAY’S LUCK 🍀</div>
+    <div id="lucky-number">--%</div>
+</div>
+/* 日常短文區 */
+.daily-text-box {
+    width: 360px;
+    background: #fff8ee;
+    padding: 25px 30px;
+    border-radius: 22px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    margin: 50px auto 30px;
+    font-size: 26px;
+    line-height: 1.6;
+}
+
+.daily-title {
+    font-size: 34px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+/* 今日幸運值 */
+.lucky-box {
+    width: 300px;
+    background: #f3e2c7;
+    padding: 22px;
+    border-radius: 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    text-align: center;
+    margin: 0 auto 40px;
+}
+
+.lucky-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#lucky-number {
+    font-size: 42px;
+    letter-spacing: 2px;
+}
+<script>
+    const lucky = Math.floor(Math.random() * 41) + 60; 
+    // 60%～100%，看起來比較療癒
+    document.getElementById("lucky-number").innerText = lucky + "%";
+</script>
+
 </html>
+
