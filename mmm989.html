@@ -10,220 +10,234 @@
  </body>
  </html>
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY DAILYY</title>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>MY DAILYY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
+  <!-- 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <style>
     body {
-        font-family: 'Nanum Pen Script', cursive;
-        background-color: #f7f1e6; /* 奶油色 */
-        margin: 0;
-        padding: 40px;
-        color: #5a4a3b;
+      font-family: 'Nanum Pen Script', cursive;
+      background: #f5f1e8;
+      margin: 0;
+      padding: 0;
+      color: #5b4636;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
     }
 
     h1 {
-        text-align: center;
-        font-size: 70px;
-        letter-spacing: 4px;
-        margin-top: 10px;
-        margin-bottom: 25px;
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .date-box {
-        width: 450px;
-        margin: auto;
-        padding: 25px 20px;
-        border: 3px solid #e8d8bc;
-        border-radius: 18px;
-        background: #fdf7ee;
-        display: flex;
-        justify-content: space-around;
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      background: #efe6d8;
+      box-shadow: inset 0 0 0 1px #d9cdbd;
+      font-size: 1.4rem;
     }
 
-    .date-item {
-        font-size: 38px;
-        padding: 8px 18px;
-        background: white;
-        border-radius: 12px;
-        border: 2px solid #e1d2b8;
+    .quote-box {
+      max-width: 700px;
+      margin: 1.5rem auto;
+      padding: 1.2rem;
+      background: #efe6d8;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      font-size: 1.3rem;
+      text-align: center;
     }
 
-    /* 左側 memo + 圖片卡 */
     .container {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 40px;
+      max-width: 900px;
+      margin: auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
 
-    .left-card, 
-    .right-card {
-        width: 310px;
-        background: #ffffffdd;
-        padding: 18px;
-        border-radius: 20px;
-        border: 3px solid #c9b7df;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* 底片框 */
+    .photo-card {
+      background: #fff;
+      border: 14px solid #b9b2cc;
+      border-top: 26px solid #b9b2cc;
+      border-bottom: 26px solid #b9b2cc;
+      padding: 1rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      border-radius: 10px;
     }
 
-    .memo-tag {
-        position: relative;
-        top: -10px;
-        left: -10px;
-        background: #f4b88f;
-        display: inline-block;
-        padding: 6px 12px;
-        font-size: 22px;
-        border-radius: 6px;
+    .photo-card img {
+      width: 100%;
+      border-radius: 10px;
+      filter: brightness(0.9) contrast(1.05) saturate(1.05);
+      display: none;
     }
 
-    .photo {
-        width: 100%;
-        height: 260px;
-        background: #dcdcdc;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        background-size: cover;
-        background-position: center;
+    .upload-label {
+      display: block;
+      text-align: center;
+      padding: 1.2rem;
+      border: 2px dashed #c9c2b3;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #faf6ef;
     }
 
-    .text {
-        font-size: 26px;
-        line-height: 1.4;
-        margin-bottom: 15px;
+    input[type="file"] {
+      display: none;
     }
 
-    .audio-bar {
-        height: 38px;
-        background: #eee;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        padding: 0 15px;
-        font-size: 24px;
+    /* 日常短文 */
+    .text-box {
+      background: #efe6d8;
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-top: 1rem;
     }
 
-    /* 右側 timeline */
-    .timeline-title {
-        margin-top: 60px;
-        font-size: 40px;
-        letter-spacing: 3px;
-        margin-left: 20px;
+    textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      padding: 0.8rem;
+      resize: none;
+      font-family: inherit;
+      background: #f9f5ee;
     }
 
-    .timeline-list {
-        margin-left: 20px;
-        font-size: 26px;
+    /* Timeline */
+    .timeline {
+      background: #f3eadc;
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
-    .bullet {
-        margin-top: 18px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
+    .timeline h3 {
+      margin-top: 0;
+      letter-spacing: 2px;
     }
 
-    .bullet-dot {
-        width: 12px;
-        height: 12px;
-        background: #8b7dc6;
-        border-radius: 50%;
+    /* 幸運值 */
+    .luck-box {
+      grid-column: span 2;
+      background: #efe6d8;
+      border-radius: 18px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* Mood box */
-    .mood-box {
-        width: 320px;
-        background: #f2e5d0;
-        padding: 25px;
-        border-radius: 16px;
-        margin-top: 50px;
-        font-size: 30px;
-        line-height: 1.5;
-        text-align: center;
+    .luck-bar {
+      height: 20px;
+      background: #d6c8a8;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
     }
 
-    .mood-icon {
-        font-size: 48px;
-        margin: 10px 0;
+    .luck-fill {
+      height: 100%;
+      background: #bfa46a;
+      width: 0%;
+      transition: 1s;
     }
 
-    /* ticket */
-    .ticket {
-        font-size: 30px;
-        padding: 12px 25px;
-        background: #e7a567;
-        border-radius: 12px;
-        width: fit-content;
-        margin-top: 40px;
-        margin-left: 20px;
+    .luck-value {
+      text-align: right;
+      margin-top: 0.3rem;
+      font-size: 1.2rem;
     }
 
-</style>
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .luck-box {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>MY DAILYY</h1>
+<header>
+  <h1>MY DAILYY</h1>
+  <div class="date-box" id="date"></div>
+</header>
 
-<div class="date-box">
-    <div class="date-item">2025</div>
-    <div class="date-item">01</div>
-    <div class="date-item">30</div>
+<div class="quote-box">
+  今天的風很溫柔，<br>你也要溫柔對待自己。
 </div>
 
 <div class="container">
 
-    <!-- LEFT PHOTO CARD -->
-    <div class="left-card">
-        <div class="memo-tag">MEMO</div>
-
-        <div class="photo" style="background-image:url('your-photo-1.jpg');"></div>
-
-        <div class="text">
-            今天的風很溫柔。<br>
-            你也要溫柔待自己。
-        </div>
-
-        <div class="audio-bar">▶ ▬▬▬▬▬▬▬▬▬▬</div>
+  <!-- 照片區（自行上傳） -->
+  <div>
+    <div class="photo-card">
+      <label class="upload-label">
+        點擊上傳你的照片 📷
+        <input type="file" accept="image/*" onchange="loadImage(event)">
+      </label>
+      <img id="preview">
     </div>
 
-    <!-- RIGHT PHOTO CARD -->
-    <div class="right-card">
-        <div class="photo" style="background-image:url('your-photo-2.jpg');"></div>
+    <div class="text-box">
+      <h3>日常短文</h3>
+      <textarea rows="4" placeholder="寫下今天的心情、生活片段或小事⋯⋯"></textarea>
     </div>
+  </div>
+
+  <!-- 時間軸 -->
+  <div class="timeline">
+    <h3>TIMELINE</h3>
+    <p>• 2025/01/01<br>新年的第一天，用照片記下新的開始。</p>
+    <p>• 2025/01/05<br>散步時看到的光影很美。</p>
+  </div>
+
+  <!-- 今日幸運值 -->
+  <div class="luck-box">
+    <h3>🍀 今日幸運值</h3>
+    <div class="luck-bar">
+      <div class="luck-fill" id="luckFill"></div>
+    </div>
+    <div class="luck-value" id="luckValue"></div>
+  </div>
 
 </div>
 
-<!-- TIMELINE -->
-<div class="timeline-title">TIMELINE</div>
+<script>
+  // 日期
+  const d = new Date();
+  document.getElementById("date").textContent =
+    `${d.getFullYear()} · ${String(d.getMonth()+1).padStart(2,'0')} · ${String(d.getDate()).padStart(2,'0')}`;
 
-<div class="timeline-list">
-    <div class="bullet">
-        <div class="bullet-dot"></div>
-        <div>2025/01/01<br>新年的第一天，用照片記下新的開始。</div>
-    </div>
+  // 照片上傳預覽
+  function loadImage(event) {
+    const img = document.getElementById('preview');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+  }
 
-    <div class="bullet">
-        <div class="bullet-dot"></div>
-        <div>2025/01/05<br>散步時看到的光影很美。</div>
-    </div>
-</div>
+  // 幸運值隨機
+  const luck = Math.floor(Math.random() * 41) + 60;
+  document.getElementById("luckFill").style.width = luck + "%";
+  document.getElementById("luckValue").textContent = luck + "%";
+</script>
 
-<!-- MOOD -->
-<div class="mood-box">
-    <div><strong>TODAY’S MOOD</strong></div>
-    <div class="mood-icon">🌿</div>
-    <div>calm</div>
-    <div style="font-size:24px; margin-top:10px;">sundays are slow</div>
-</div>
-
-<!-- Ticket -->
-<div class="ticket">TICKET</div>
 </body>
 </html>
 
